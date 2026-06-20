@@ -37,6 +37,16 @@
   box-shadow: var(--shadow);
 }
 
+.login-video {
+  width: min(280px, 100%);
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+  border-radius: 12px;
+  object-fit: contain;
+  background: var(--white);
+}
+
 .admin-card--wide {
   max-width: 960px;
 }
