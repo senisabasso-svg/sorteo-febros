@@ -20,8 +20,8 @@ const JWT_SECRET = Deno.env.get('JWT_SECRET') || 'sorteo-febros-session';
 
 function getAdminCredentials() {
   return {
-    user: (Deno.env.get('ADMIN_USER') || 'admin').trim(),
-    pass: Deno.env.get('ADMIN_PASS') || 'soldada',
+    user: (Deno.env.get('ADMIN_USER') || 'senisabasso@gmail.com').trim(),
+    pass: Deno.env.get('ADMIN_PASS') || 'password123',
   };
 }
 
