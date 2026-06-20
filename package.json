@@ -1,7 +1,7 @@
 {
-  "name": "sorteo-beautymaxuy",
+  "name": "sorteo-febros",
   "version": "1.0.0",
-  "description": "Sorteo BeautyMax con Supabase y frontend en Cloudflare Pages",
+  "description": "Sorteo Febros Software Development con Supabase y Cloudflare Pages",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

@@ -17,8 +17,8 @@ type Participante = {
 
 const ADMIN_USER = Deno.env.get('ADMIN_USER') || 'admin';
 const ADMIN_PASS = Deno.env.get('ADMIN_PASS') || 'soldada';
-const FRONTEND_URL = Deno.env.get('FRONTEND_URL') || 'https://sorteo-beautymaxuy.pages.dev';
-const JWT_SECRET = Deno.env.get('JWT_SECRET') || 'sorteo-beautymax-session';
+const FRONTEND_URL = Deno.env.get('FRONTEND_URL') || 'https://sorteo-febros.pages.dev';
+const JWT_SECRET = Deno.env.get('JWT_SECRET') || 'sorteo-febros-session';
 
 const supabase = createClient(
   Deno.env.get('SUPABASE_URL')!,

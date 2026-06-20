@@ -17,7 +17,7 @@ app.set('trust proxy', 1);
 
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
 const ADMIN_PASS = process.env.ADMIN_PASS || 'soldada';
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://sorteo-beautymaxuy.pages.dev';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://sorteo-febros.pages.dev';
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
@@ -159,7 +159,7 @@ async function start() {
         pool: db.pool,
         createTableIfMissing: true,
       }),
-      secret: process.env.SESSION_SECRET || 'sorteo-beautymax-session',
+      secret: process.env.SESSION_SECRET || 'sorteo-febros-session',
       resave: false,
       saveUninitialized: false,
       cookie: {
