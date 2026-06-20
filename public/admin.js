@@ -37,13 +37,22 @@ function setAuthenticated(isAuthenticated) {
 }
 
 async function checkSession() {
+  const token = sessionStorage.getItem('admin_token');
+  if (!token) {
+    setAuthenticated(false);
+    return;
+  }
+
   const response = await apiFetch('/api/admin/session');
   const data = await response.json();
   setAuthenticated(data.authenticated);
 
   if (data.authenticated) {
     await loadParticipantes();
+    return;
   }
+
+  sessionStorage.removeItem('admin_token');
 }
 
 async function loadParticipantes() {
@@ -51,7 +60,10 @@ async function loadParticipantes() {
   const data = await response.json();
 
   if (!response.ok) {
-    if (response.status === 401) setAuthenticated(false);
+    if (response.status === 401) {
+      sessionStorage.removeItem('admin_token');
+      setAuthenticated(false);
+    }
     return;
   }
 
@@ -164,12 +176,17 @@ loginForm.addEventListener('submit', async (e) => {
     return;
   }
 
+  if (data.token) {
+    sessionStorage.setItem('admin_token', data.token);
+  }
+
   setAuthenticated(true);
   await loadParticipantes();
 });
 
 btnLogout.addEventListener('click', async () => {
   await apiFetch('/api/admin/logout', { method: 'POST' });
+  sessionStorage.removeItem('admin_token');
   setAuthenticated(false);
   loginForm.reset();
 });

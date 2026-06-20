@@ -146,7 +146,7 @@ async function start() {
 
   if (!databaseUrl) {
     console.error(
-      'Falta DATABASE_URL. En Railway: servicio web → Variables → Add Reference → Postgres → DATABASE_URL'
+      'Falta DATABASE_URL. En Supabase: Project Settings → Database → Connection string (URI).'
     );
     process.exit(1);
   }

@@ -1,0 +1,4 @@
+project_id = "zxonaviukjfyaftorifs"
+
+[functions.sorteo-api]
+verify_jwt = false

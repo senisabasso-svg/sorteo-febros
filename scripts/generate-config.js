@@ -1,20 +1,23 @@
 const fs = require('fs');
 const path = require('path');
 
-const backend = (
-  process.env.BACKEND_URL ||
-  'https://sorteo-beautymaxuy-production.up.railway.app'
+const supabaseUrl = (
+  process.env.SUPABASE_URL ||
+  'https://zxonaviukjfyaftorifs.supabase.co'
 ).replace(/\/$/, '');
 
-const content = `window.API_BASE = '${backend}';\n`;
+const anonKey = process.env.SUPABASE_ANON_KEY || '';
+const apiBase = `${supabaseUrl}/functions/v1/sorteo-api`;
 
-const targets = [
-  path.join(__dirname, '..', 'config.js'),
-  path.join(__dirname, '..', 'public', 'config.js'),
-];
+const content = [
+  `window.SUPABASE_URL = '${supabaseUrl}';`,
+  `window.SUPABASE_ANON_KEY = '${anonKey}';`,
+  `window.API_BASE = '${apiBase}';`,
+  '',
+].join('\n');
 
-for (const target of targets) {
-  fs.writeFileSync(target, content);
-}
+const target = path.join(__dirname, '..', 'public', 'config.js');
+fs.writeFileSync(target, content);
 
-console.log(`API_BASE: ${backend}`);
+console.log(`SUPABASE_URL: ${supabaseUrl}`);
+console.log(`API_BASE: ${apiBase}`);
