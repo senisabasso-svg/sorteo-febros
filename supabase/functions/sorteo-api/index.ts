@@ -15,10 +15,25 @@ type Participante = {
   created_at: string;
 };
 
-const ADMIN_USER = Deno.env.get('ADMIN_USER') || 'admin';
-const ADMIN_PASS = Deno.env.get('ADMIN_PASS') || 'soldada';
 const FRONTEND_URL = Deno.env.get('FRONTEND_URL') || 'https://sorteo-febros.pages.dev';
 const JWT_SECRET = Deno.env.get('JWT_SECRET') || 'sorteo-febros-session';
+
+function getAdminCredentials() {
+  return {
+    user: (Deno.env.get('ADMIN_USER') || 'admin').trim(),
+    pass: Deno.env.get('ADMIN_PASS') || 'soldada',
+  };
+}
+
+async function parseJsonBody(req: Request): Promise<Record<string, unknown>> {
+  try {
+    const text = await req.text();
+    if (!text.trim()) return {};
+    return JSON.parse(text) as Record<string, unknown>;
+  } catch {
+    return {};
+  }
+}
 
 const supabase = createClient(
   Deno.env.get('SUPABASE_URL')!,
@@ -98,7 +113,7 @@ async function isAdminRequest(req: Request): Promise<boolean> {
 }
 
 async function handlePostParticipantes(req: Request, origin: string | null) {
-  const body = await req.json();
+  const body = await parseJsonBody(req);
   const nombre = String(body.nombre || '').trim();
   const direccion = String(body.direccion || '').trim();
   const ciudad = String(body.ciudad || '').trim();
@@ -132,11 +147,18 @@ async function handlePostParticipantes(req: Request, origin: string | null) {
 }
 
 async function handleAdminLogin(req: Request, origin: string | null) {
-  const body = await req.json();
+  const body = await parseJsonBody(req);
   const usuario = String(body.usuario || '').trim();
   const clave = String(body.clave || '');
+  const { user: adminUser, pass: adminPass } = getAdminCredentials();
 
-  if (usuario !== ADMIN_USER || clave !== ADMIN_PASS) {
+  if (usuario !== adminUser || clave !== adminPass) {
+    console.log('Login fallido:', {
+      usuarioRecibido: usuario,
+      adminUserConfigurado: adminUser,
+      secretAdminUserPresente: Boolean(Deno.env.get('ADMIN_USER')),
+      secretAdminPassPresente: Boolean(Deno.env.get('ADMIN_PASS')),
+    });
     return jsonResponse({ error: 'Usuario o clave incorrectos.' }, 401, origin);
   }
 

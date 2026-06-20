@@ -6,7 +6,7 @@ $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
 
 Write-Host "=== 1/4 Vincular proyecto Supabase ===" -ForegroundColor Cyan
-npx supabase link --project-ref zxaonaviukjfyaftorifs
+npx supabase link --project-ref zxonaviukjfyaftorifs
 
 Write-Host "=== 2/4 Aplicar migraciones SQL ===" -ForegroundColor Cyan
 npx supabase db push
