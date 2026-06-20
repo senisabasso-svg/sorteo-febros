@@ -1,0 +1,21 @@
+{
+  "name": "sorteo-beautymaxuy",
+  "version": "1.0.0",
+  "description": "Sorteo BeautyMax con backend PostgreSQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "sync:cloudflare": "node scripts/sync-cloudflare.js",
+    "build:cloudflare": "node scripts/generate-config.js && node scripts/sync-cloudflare.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "connect-pg-simple": "^10.0.0",
+    "express": "^4.21.2",
+    "pg": "^8.16.0",
+    "express-session": "^1.18.1"
+  }
+}

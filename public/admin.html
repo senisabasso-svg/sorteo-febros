@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Sorteo BeautyMax</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-page">
+    <header class="admin-header">
+      <a href="/" class="admin-header__back">← Volver al sorteo</a>
+      <button type="button" id="btn-logout" class="admin-header__logout" hidden>Cerrar sesión</button>
+    </header>
+
+    <section id="login-screen" class="admin-card">
+      <img src="assets/logo-beautymax.png" alt="BeautyMax Distribuidora" class="logo logo--small">
+      <h1 class="admin-title">Acceso administrador</h1>
+
+      <form id="login-form" class="form">
+        <div class="field">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="usuario" name="usuario" required autocomplete="username">
+        </div>
+
+        <div class="field">
+          <label for="clave">Clave</label>
+          <input type="password" id="clave" name="clave" required autocomplete="current-password">
+        </div>
+
+        <p id="login-error" class="form-error" hidden></p>
+        <button type="submit" class="btn btn--primary btn--full">Ingresar</button>
+      </form>
+    </section>
+
+    <section id="dashboard" class="admin-dashboard" hidden>
+      <div class="admin-card admin-card--wide">
+        <div class="admin-top">
+          <div>
+            <h1 class="admin-title">Panel de sorteo</h1>
+            <p class="admin-subtitle">BeautyMax Distribuidora</p>
+          </div>
+          <p class="admin-count"><span id="total-participantes">0</span> participantes</p>
+        </div>
+
+        <nav class="tabs">
+          <button type="button" class="tabs__btn tabs__btn--active" data-tab="clientes">Clientes registrados</button>
+          <button type="button" class="tabs__btn" data-tab="sorteo">Realizar sorteo</button>
+        </nav>
+
+        <div id="tab-clientes" class="tab-panel tab-panel--active">
+          <div id="clientes-list" class="clientes-list"></div>
+          <p id="clientes-empty" class="empty-state" hidden>No hay participantes registrados todavía.</p>
+        </div>
+
+        <div id="tab-sorteo" class="tab-panel">
+          <div class="sorteo-panel">
+            <p class="sorteo-panel__text">Se elegirá un ganador al azar entre todos los participantes registrados.</p>
+            <button type="button" id="btn-sortear" class="btn btn--primary btn--full">Realizar sorteo</button>
+
+            <div id="countdown" class="countdown" hidden>
+              <span id="countdown-number" class="countdown__number">3</span>
+            </div>
+
+            <div id="ganador" class="ganador" hidden>
+              <p class="ganador__label">¡Ganador!</p>
+              <h2 id="ganador-nombre" class="ganador__nombre"></h2>
+              <ul class="ganador__datos">
+                <li><strong>Dirección:</strong> <span id="ganador-direccion"></span></li>
+                <li><strong>Ciudad:</strong> <span id="ganador-ciudad"></span></li>
+                <li><strong>Celular:</strong> <span id="ganador-celular"></span></li>
+              </ul>
+              <a id="ganador-whatsapp" class="btn btn--whatsapp btn--full" href="#" target="_blank" rel="noopener noreferrer">
+                Contactar por WhatsApp
+              </a>
+              <button type="button" id="btn-repetir-sorteo" class="btn btn--secondary btn--full">Sortear de nuevo</button>
+            </div>
+
+            <p id="sorteo-error" class="form-error" hidden></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="api.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

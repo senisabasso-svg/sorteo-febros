@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteo BeautyMax Distribuidora</title>
+  <meta name="description" content="Participá del sorteo BeautyMax. Kit valor $10.000 en productos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="/admin.html" class="admin-link">Administrador</a>
+
+  <main class="page">
+    <section id="landing" class="screen screen--active">
+      <div class="card">
+        <img src="assets/logo-beautymax.png" alt="BeautyMax Distribuidora" class="logo">
+
+        <div class="hero">
+          <p class="hero__date">Sorteo martes 23 de junio</p>
+          <h1 class="hero__title">Kit valor $ 10.000 pesos</h1>
+          <p class="hero__subtitle">en productos!</p>
+        </div>
+
+        <button type="button" id="btn-participar" class="btn btn--primary">
+          PARTICIPAR
+        </button>
+      </div>
+    </section>
+
+    <section id="formulario" class="screen">
+      <div class="card">
+        <img src="assets/logo-beautymax.png" alt="BeautyMax Distribuidora" class="logo logo--small">
+
+        <h2 class="form-title">Completá tus datos</h2>
+        <p class="form-subtitle">Para participar del sorteo</p>
+
+        <form id="participacion-form" class="form" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Tu nombre completo">
+          </div>
+
+          <div class="field">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" required autocomplete="street-address" placeholder="Calle y número">
+          </div>
+
+          <div class="field">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad" required autocomplete="address-level2" placeholder="Tu ciudad">
+          </div>
+
+          <div class="field">
+            <label for="celular">Celular</label>
+            <input type="tel" id="celular" name="celular" required autocomplete="tel" placeholder="09X XXX XXX">
+          </div>
+
+          <p id="form-error" class="form-error" hidden></p>
+
+          <div class="form-actions">
+            <button type="button" id="btn-volver" class="btn btn--secondary">Volver</button>
+            <button type="submit" id="btn-enviar" class="btn btn--primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="exito" class="screen">
+      <div class="card">
+        <img src="assets/logo-beautymax.png" alt="BeautyMax Distribuidora" class="logo logo--small">
+        <h2 class="form-title">¡Listo!</h2>
+        <p class="form-subtitle">Ya estás registrado en el sorteo. Te redirigimos a WhatsApp para confirmar.</p>
+        <button type="button" id="btn-inicio" class="btn btn--primary">Volver al inicio</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="api.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
