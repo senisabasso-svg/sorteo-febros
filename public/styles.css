@@ -67,7 +67,7 @@ body {
 .screen {
   display: none;
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   animation: fadeIn 0.35s ease;
 }
 
@@ -146,6 +146,40 @@ body {
 .hero__subtitle {
   font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 400;
+  color: var(--gray);
+}
+
+.premios-list {
+  list-style: none;
+  text-align: left;
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.premios-list li {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--black);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--gray-light);
+}
+
+.premios-list li strong {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 0.2rem;
+}
+
+.premios-list__extra {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
   color: var(--gray);
 }
 
